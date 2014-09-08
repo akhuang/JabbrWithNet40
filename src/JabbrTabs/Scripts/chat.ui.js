@@ -26,8 +26,11 @@
                 tab: $("#new-tab-template")
             };
             $tabs = $('#tabs, #tabs-dropdown');
-
+            ui.updateTabOverflow();
             $window.resize(function () {
+                ui.updateTabOverflow();
+            });
+            $window.focus(function () {
                 ui.updateTabOverflow();
             });
 

@@ -256,3 +256,29 @@ textarea {
 @media screen and (max-height: 400px) #tabs-dropdown-container .dropdown-toggle {
     height: 32px;
 }
+
+@media (max-width:700px) {
+      #heading h1 {
+        text-indent: -9999px;
+        background-image: url('images/logo32.png');
+        width: 32px;
+        height: 32px;
+        margin-top: 0;
+    }
+
+      #tabs {
+        /* wider for additional admin buttons */
+        margin-right: 160px;
+        margin-left: 44px;
+    }
+       
+        #tabs li a {
+            padding-left: 6px;
+            padding-right: 20px;
+        }
+
+        #tabs li.no-close a {
+            padding-right: 6px;
+        }
+
+}
