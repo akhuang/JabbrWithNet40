@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script id="new-tab-template" type="text/x-jsrender">
+    <li id="tabs-{{>id}}" class="room" data-name="{{>name}}" data-closed="{{>closed}}" data-trimmable="true" role="tab">
+        <a>
+            <i class="icon-lock lock hide"></i>
+            <i class="icon-ban-circle readonly hide"></i>
+            <span class="content">{{>name}}</span>
+            <button class="close">&times;</button>
+        </a>
+    </li>
+</script>
+<section id="page">
+    <header id="heading" role="heading">
+        <div class="banner" role="banner">
+            <h1>JabbR</h1>
+        </div>
+        <nav>
+            <ul id="tabs" role="tablist" data-listidx="0">
+                <li id="tabs-lobby" class="lobby no-close current" data-name="Lobby" data-trimmable="false" role="tab" data-cursor="pointer" style="cursor: pointer; visibility: visible;">
+                    <a accesskey="l">
+                        <span class="content">Lobby</span>
+                    </a>
+                </li>
+                <li id="tabs-lobby" class="" data-name="Lobby" data-trimmable="false" role="tab" data-cursor="pointer" style="cursor: pointer; visibility: visible;">
+                    <a accesskey="l">
+                        <span class="content">Room1</span>
+                        <button class="close">&times;</button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="main-menu" class="pull-right">
+            <div id="tabs-dropdown-container" role="tablist">
+                <button class="dropdown-toggle" data-toggle="dropdown" id="tabs-dropdown-rooms">
+                    <i class="fa fa-chevron-down fa-2x"></i>
+                </button>
+
+                <ul id="tabs-dropdown" class="dropdown-menu pull-right" aria-labelledby="tabs-dropdown-rooms" data-listidx="1"></ul>
+            </div>
+            <div id="connectionStatus" class="connection-status" data-toggle="popover" data-placement="bottom" data-original-title="" title="">
+                <i class="icon-connection-status"></i>
+                <div id="connection-info-popover" class="popover"><div class="arrow"></div><div class="popover-inner"><i class="popover-title-icon icon-globe" style="display: none;"></i><h3 class="popover-title" style="display: none;"></h3><div class="popover-content"><p></p></div></div></div>
+                <div id="connection-info-content" style="display: none;"><p id="connection-status"></p><p id="connection-transport"></p></div>
+                <div id="connection-state-changed-popover" class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" style="display: none;"></h3><i id="popover-content-icon"></i><div class="popover-content"><p></p></div></div></div>
+            </div>
+            <div id="preferences" class="navbar account pull-right">
+                <div class="navbar-inner">
+                    <ul class="nav">
+                        <li><a id="notifications" class="" title="Notifications" href="/Jabbr/notifications" target="_blank"><i class="icon-comments"></i><span id="notification-unread-count" class="badge badge-info" style="display: none;"></span></a></li>
+                        <li><a class="" title="Account Settings" href="/Jabbr/account" target="_blank"><i class="icon-user"></i></a></li>
+                        <li><a class="" title="JabbR Settings" href="/Jabbr/administration" target="_blank"><i class="icon-cog"></i></a></li>
+                        <li><a class="help" aria-haspopup="true" title="Display Help"><i class="icon-question-sign"></i></a></li>
+                        <li><a class="logout" title="Sign Out"><i class="icon-signout"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="chat-area">
+        <button id="btnAdd">add room</button>
+        <div id="container">
+
+
+        </div>
+    </div>
+</section>
+
+@section  scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $.chat.ui.initialize();
+
+            $("#btnAdd").click(function () {
+                $.chat.ui.addRoom("test2");
+            });
+        });
+    </script>
+}
