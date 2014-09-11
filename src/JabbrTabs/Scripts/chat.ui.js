@@ -1,9 +1,10 @@
-﻿(function ($, window) {
+﻿(function ($, window, document) {
     "use strict";
-    var templates = null;
-    var $tabs = null;
 
-    var $window = $(window);
+    var $document = $(document),
+        templates = null,
+        $tabs = null,
+        $window = $(window);
 
     function AddRoom(roomName) {
         var $tabsDropdown = $tabs.last();
@@ -15,6 +16,7 @@
             closed: 'closed'
         };
         var tmp = templates.tab.render(viewModel);
+
         $tabsDropdown.append(tmp);
 
         ui.updateTabOverflow();
@@ -34,6 +36,11 @@
                 ui.updateTabOverflow();
             });
 
+            $document.on('click', ".close", function (e) {
+                $(this).closest("li").remove();
+                e.preventDefault();
+                return false;
+            });
         },
         addRoom: AddRoom,
         updateTabOverflow: function () {
@@ -92,4 +99,4 @@
     $.chat = $.chat || {};
     $.chat.ui = ui;
 
-})(jQuery, window)
+})(jQuery, window, window.document)

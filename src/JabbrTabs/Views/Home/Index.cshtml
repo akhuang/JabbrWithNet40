@@ -76,6 +76,10 @@
             $("#btnAdd").click(function () {
                 $.chat.ui.addRoom("test2");
             });
+
+            $(".close").click(function () {
+                $(this).closest("li").remove();
+            });
         });
     </script>
 }
